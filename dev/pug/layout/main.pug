@@ -1,0 +1,26 @@
+include ../mixins
+block variables
+
+doctype html
+html(lang="ru-RU")
+  head
+    meta(charset='UTF-8')
+    title #{title}
+
+    meta(name="description" content="")
+    meta(name="author" content="")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    meta(name="keywords" content="")
+
+    <!-- ICO-->
+    link(rel="stylesheet" type='text/css' href="./libs/swiper-bundle.min.css")
+    link(rel="stylesheet" type='text/css' href="./css/critical.css")
+    block libs-css
+    <!--MAIN-CSS -->
+  body
+    block content
+    //script(src="./libs/lazysizes.min.js")
+    script(src="./libs/swiper-bundle.min.js")
+    script(src="./libs/scroll-lock.min.js")
+    script(src="./js/scripts/scripts.js")
+    block libs-js

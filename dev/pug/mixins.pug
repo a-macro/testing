@@ -1,0 +1,10 @@
+mixin icon(name,mod)
+  - mod = mod || ''
+  svg(class="icon icon-" + name + ' ' + mod)
+    use(xlink:href="./img/svg/symbol/sprite.svg#" + name)
+
+mixin btn(text, className)
+  - className = className || ''
+  a(href="#" class=className).btn
+    span #{text}
+    +icon("arr-right")

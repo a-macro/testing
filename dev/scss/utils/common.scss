@@ -1,0 +1,56 @@
+@use 'sass:math';
+@import './utils/variables';
+@import './utils/smart-grid';
+@import './utils/mixins';
+@import './utils/reset';
+
+html {
+    
+}
+
+body {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.main {
+    flex-grow: 1;
+}
+
+.visually-hidden {
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+a,
+button,
+input,
+textarea {
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    color: inherit;
+    text-decoration: none;
+}
+
+.swiper-notification {
+    position: absolute;
+}
+
+.moz {
+    /*.dropdown__inner {
+        scrollbar-width: thin;
+        scrollbar-color:  rgba(11, 30, 94, 0.5) transparent;
+    }*/
+}
