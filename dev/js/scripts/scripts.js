@@ -17,13 +17,17 @@ window.addEventListener('DOMContentLoaded', () => {
     document.documentElement.style.setProperty('--h', winH + 'px');
     document.documentElement.style.setProperty('--w', winW + 'px');
 
+    let id = 0;
     window.addEventListener("resize", (e) => {
-        if(winW != window.innerWidth) {
-            winH = window.innerHeight;
-            winW = window.innerWidth;
-        }
-        document.documentElement.style.setProperty('--h', winH + 'px');
-        document.documentElement.style.setProperty('--w', winW + 'px');
+        clearTimeout(id);
+        id = setTimeout(() => {
+            if(winW != window.innerWidth) {
+                winH = window.innerHeight;
+                winW = window.innerWidth;
+            }
+            document.documentElement.style.setProperty('--h', winH + 'px');
+            document.documentElement.style.setProperty('--w', winW + 'px');
+        }, 100);
     });
 });
 
