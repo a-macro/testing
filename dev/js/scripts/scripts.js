@@ -35,12 +35,36 @@ window.addEventListener('DOMContentLoaded', () => {
         bgcolor: null,
         overlayClose: true,
         onContentLoaded: (newcontent) => {
-            initPopup();
+            let scripts = [];
+            let startText = newcontent;
+            function getScript() {
+                let newArr = startText.split("<script>");
+                if(newArr[1]) {
+                    let scriptSplit = newArr[1].split("</script>");
+                    scripts.push(scriptSplit[0]);
+                    let newArr2 = [newArr[0], scriptSplit[1], ...newArr.slice(2, newArr[length - 1]).map((el)=>"<script>"+el)];
+                    startText = newArr2.join("");
+                    getScript();
+                }
+            }
+            getScript();
+            let body = document.querySelector("body");
+            if(scripts.length) {
+                scripts.forEach(script => {
+                    let newScript = document.createElement('script');
+                    newScript.textContent = script;
+                    body.appendChild(newScript);
+                });
+            }
+            
             setSubmitVal();
         },
     };
     let vBox;
-    if(VenoBox) {
+    function isset(r) {
+        return typeof r !== 'undefined';
+    }
+    if(isset(window['VenoBox'])) {
         vBox = new VenoBox(vboxOptions);
         window.vBox = vBox;
     }
