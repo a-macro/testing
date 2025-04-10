@@ -17,6 +17,26 @@ window.addEventListener('DOMContentLoaded', () => {
     document.documentElement.style.setProperty('--h', winH + 'px');
     document.documentElement.style.setProperty('--w', winW + 'px');
 
+    let anchors = document.querySelectorAll('[data-anchor]');
+    if (anchors.length) {
+        anchors.forEach((anchor) => {
+            anchor.onclick = (e) => {
+                e.preventDefault();
+                let attr = anchor.dataset.anchor;
+                let related = document.querySelector(`#${attr}`);
+                if (related) {
+                    let headerH = header.offsetHeight;
+                    let top = related.offsetTop; // + window.scrollY;
+                    let calcTop = top - headerH > 0 ? top - headerH : 0;
+                    window.scrollTo({
+                        top: calcTop,
+                        behavior: 'smooth',
+                    });
+                }
+            };
+        });
+    }
+
     let id = 0;
     window.addEventListener("resize", (e) => {
         clearTimeout(id);
