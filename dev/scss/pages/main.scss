@@ -91,3 +91,137 @@
         gap: 16px 30px;
     }
 }
+
+.order {
+    position: relative;
+    padding-top: 120px;
+    padding-bottom: 150px;
+    background: var(--bg-dark2);
+    &__bg {
+        @include full;
+        z-index: 1;
+        img {
+            @include cover;
+        }
+    }
+    &__content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 80px;
+        &_top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+    }
+
+    &__title {
+        color: var(--white);
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+    }
+    &__text {
+        color: var(--light);
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    &__steps {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+    &__step {
+        width: 209px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 0 10px;
+        position: relative;
+        &:nth-child(5n),
+        &:last-child {
+            .order__step_dots {
+                display: none;
+            }
+        }
+        p,
+        span {
+            color: var(--white);
+            text-align: center;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+        &_circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--blue-hovered);
+            border: 5px solid var(--blue-dark);
+
+            img,
+            svg {
+                @include contain;
+                width: 55px;
+                height: 55px;
+                fill: white;
+            }
+        }
+        &_dots {
+            position: absolute;
+            top: 47px;
+            right: -15px;
+            width: 110px;
+            transform: translateX(50%);
+            display: flex;
+            justify-content: space-between;
+            span {
+                display: block;
+                width: 6px;
+                height: 6px;
+                border-radius: 100%;
+                background: var(--grey);
+                animation: dottGlitch 1s infinite;
+                &:nth-child(1) {
+                    animation-delay: 0s;
+                }
+                &:nth-child(2) {
+                    animation-delay: 0.1s;
+                }
+                &:nth-child(3) {
+                    animation-delay: 0.2s;
+                }
+                &:nth-child(4) {
+                    animation-delay: 0.3s;
+                }
+                &:nth-child(5) {
+                    animation-delay: 0.4s;
+                }
+            }
+        }
+    }
+}
+
+@keyframes dottGlitch {
+    0% {
+        opacity: 0.76;
+    }
+    100% {
+        opacity: 1;
+    }
+}

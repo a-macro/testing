@@ -62,23 +62,21 @@ block content
                     source(srcset="./img/map-mob.webp" type="image/webp")
                     img(src="./img/map-mob.png" alt="")
             .order__content.container
-                h2.order__title Оформление  <span class='blue'>Заказа</span>
-                .order__text
-                    p Перед заполнением формы ознакомьтесь с нашей схемой работы!
+                .order__content_top
+                    h2.order__title Оформление  <span class='blue'>Заказа</span>
+                    .order__text
+                        p Перед заполнением формы ознакомьтесь с нашей схемой работы!
                 .order__steps
                     for item, i in steps
                         .order__step
                             .order__step_circle
-                                .order__step_circle-bg
-                                .order__step_circle-ico
-                                    +icon(item.ico)
+                                +icon(item.ico)
                             p #{item.text}
-                            if(i != steps.length-1)
-                                .order__step_dots
-                                    span
-                                    span
-                                    span
-                                    span
-                                    span
+                            .order__step_dots
+                                span
+                                span
+                                span
+                                span
+                                span
     include ../modules/footer
 
