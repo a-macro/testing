@@ -1,9 +1,84 @@
 extends ../layout/main
 
 block variables
-    - const title = 'Разводящая';
+    - 
+        const title = 'Главная';
+        const steps = [
+            {
+                ico: 'search',
+                text: 'Lorem ipsum dolor sit amet'
+            },
+            {
+                ico: 'percent',
+                text: 'Сonsecteturadipiscing elit'
+            },
+            {
+                ico: 'file',
+                text: 'Sed do eiusmod tempor'
+            },
+            {
+                ico: 'message',
+                text: 'Esse cillum dolore eu fugiat'
+            },
+            {
+                ico: 'money',
+                text: 'Excepteur sint occaecat cupidatat non proident'
+            }
+        ]
+
+block libs-js
+    //script(src="./js/scripts/main-p.js")
+
+block libs-css
+    //link(rel="stylesheet" type='text/css' href="./css/main-p.css")
 
 block content
-    ul
-        li
-            a(href="./main.html") main.html - Главная
+    include ../modules/header
+    main.main
+        .intro
+            .intro__bg
+                picture
+                    source(media="(min-width:601px)" srcset="./img/banner.webp" type="image/webp")
+                    source(media="(min-width:601px)" srcset="./img/banner.jpg" type="image/jpeg")
+                    source(srcset="./img/banner-mob.webp" type="image/webp")
+                    img(src="./img/banner-mob.jpg" alt="")
+            .intro__content.container
+                h1.intro__title <span class='blue'>Lorem ipsum</span> dolor sit ametconsectetur <span class='blue'>adipiscing</span>
+                .intro__text
+                    p
+                        b At vero eos et accusamus et iusto odio dignissimos ducimus!
+                    ul
+                        li Totam rem aperiam eaque ipsa
+                        li Sit voluptatem accusantium doloremque laudantium
+                        li Sed ut perspiciatis, unde omnis iste natus error
+                .intro__btns
+                    a(href="#").btn заказать
+                    a(href="#").btn-white  подробнее
+        .order
+            .order__bg
+                picture
+                    source(media="(min-width:601px)" srcset="./img/map.webp" type="image/webp")
+                    source(media="(min-width:601px)" srcset="./img/map.png" type="image/png")
+                    source(srcset="./img/map-mob.webp" type="image/webp")
+                    img(src="./img/map-mob.png" alt="")
+            .order__content.container
+                h2.order__title Оформление  <span class='blue'>Заказа</span>
+                .order__text
+                    p Перед заполнением формы ознакомьтесь с нашей схемой работы!
+                .order__steps
+                    for item, i in steps
+                        .order__step
+                            .order__step_circle
+                                .order__step_circle-bg
+                                .order__step_circle-ico
+                                    +icon(item.ico)
+                            p #{item.text}
+                            if(i != steps.length-1)
+                                .order__step_dots
+                                    span
+                                    span
+                                    span
+                                    span
+                                    span
+    include ../modules/footer
+

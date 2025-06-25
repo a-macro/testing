@@ -1,3 +1,10 @@
 :root {
-
+    --p: max(min(min(375px, 20vw), calc(50vw - 585px - var(--scr, 17px) / 2)), 32px);
+    --bg-dark: rgba(16, 16, 29, 0.9);
+    --white: white;
+    --black: #000;
+    --dark: #6f6d7b;
+    --text-primary: #2a2b30;
+    --blue: rgba(67, 171, 240, 1);
+    --blue-hovered: rgb(15 146 233);
 }

@@ -5,7 +5,6 @@
 @import './utils/reset';
 
 html {
-    
 }
 
 body {
@@ -19,6 +18,56 @@ body {
     flex-grow: 1;
 }
 
+.container {
+    padding-left: var(--p);
+    padding-right: var(--p);
+}
+
+.btn {
+    min-width: 183px;
+    border-radius: 4px;
+    border: 1px solid var(--white);
+    background: var(--blue);
+    padding: 15px 10px;
+
+    color: var(--white);
+    text-align: center;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    transition: color 0.3s, background 0.3s;
+    @include hover {
+        background: var(--blue-hovered);
+    }
+}
+
+.btn-white {
+    min-width: 183px;
+    border-radius: 4px;
+    border: 1px solid var(--dark);
+    background: var(--white);
+    padding: 15px 10px;
+
+    color: var(--text-primary);
+    text-align: center;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    transition: color 0.3s, border 0.3s;
+    @include hover {
+        color: var(--blue-hovered);
+        border-color: var(--blue-hovered);
+    }
+}
+
+.blue {
+    color: var(--blue);
+}
+
 .visually-hidden {
     opacity: 0;
     visibility: hidden;
@@ -28,29 +77,16 @@ body {
     position: absolute;
 }
 
-a,
-button,
-input,
-textarea {
-    border: none;
-    padding: 0;
-    margin: 0;
-    outline: none;
-    font-size: inherit;
-    font-weight: inherit;
-    line-height: inherit;
-    font-family: inherit;
-    color: inherit;
-    text-decoration: none;
-}
-
 .swiper-notification {
     position: absolute;
 }
 
+.scrollable {
+}
+
 .moz {
-    /*.dropdown__inner {
+    .scrollable {
         scrollbar-width: thin;
-        scrollbar-color:  rgba(11, 30, 94, 0.5) transparent;
-    }*/
+        scrollbar-color: rgba(62, 156, 220, 1) rgba(61, 64, 80, 1);
+    }
 }
