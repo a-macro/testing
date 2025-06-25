@@ -77,9 +77,13 @@ body {
     position: relative;
 }
 ._err {
-    input {
+    input,
+    .custom-select .custom-trigger {
         border-color: red;
     }
+}
+.dropped {
+    z-index: 2;
 }
 .custom-select {
     position: relative;
@@ -138,6 +142,9 @@ body {
         font-weight: 400;
         line-height: normal;
         transition: border 0.3s, background 0.3s;
+        @include xxxs-block {
+            font-size: 16px;
+        }
         @include hover {
             border-color: var(--blue);
         }
@@ -171,11 +178,17 @@ body {
         padding: 4px 6px;
         cursor: pointer;
         transition: background 0.3s;
+        @include xxxs-block {
+            font-size: 16px;
+        }
         @include hover {
             background: #3d4050;
         }
         &.checked {
             color: var(--blue);
+        }
+        &.hidden {
+            display: none;
         }
     }
 }
@@ -289,7 +302,7 @@ body {
         font-size: 16px;
         line-height: 100%;
         font-style: normal;
-        border-radius: 8px;
+        border-radius: 3px;
         background: rgba(61, 64, 80, 0.85);
         max-width: min(400px, 100%);
         width: max-content;
@@ -328,6 +341,9 @@ body {
     font-weight: 400;
     line-height: normal;
     transition: border 0.3s, background 0.3s;
+    @include xxxs-block {
+        font-size: 16px;
+    }
     &::placeholder {
         color: var(--bg-dark2);
     }

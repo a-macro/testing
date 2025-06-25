@@ -7,6 +7,8 @@ function addErr(inp) {
     }
     if (parent) {
         parent.classList.add('_err');
+    } else {
+        inp.classList.add('_err');
     }
 }
 
@@ -15,8 +17,13 @@ function removeErr(inp) {
     if (!parent) {
         parent = inp.closest('.checkbox');
     }
+    if (!parent) {
+        parent = inp.closest('.js-select__wrap');
+    }
     if (parent) {
         parent.classList.remove('_err');
+    } else {
+        inp.classList.remove('_err');
     }
 }
 
@@ -70,6 +77,7 @@ function setSubmitVal() {
                         del.className = 'empty-text__btn-del';
                         del.innerText = '';
                         emptyText.appendChild(del);
+                        inputFile.classList.remove('_err');
                         del.onclick = () => {
                             this.value = '';
                             emptyText.innerHTML = '';
@@ -109,10 +117,14 @@ function setSubmitVal() {
                 }
                 let check = formValidator(form);
                 let errs = form.querySelectorAll('._err');
+                console.log(errs);
                 if (errs.length > 0 || check > 0) {
                     e.preventDefault();
                     scrollToErr(form);
                     return false;
+                } else {
+                    e.preventDefault();
+                    openModalFunc(document.querySelector('.modal'));
                 }
             });
         });
@@ -125,14 +137,20 @@ function setSubmitVal() {
         let result = format.test(inp.value);
         return result;
     }
+    let timer;
 
+    function debounce(inp) {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            console.log(1);
+            inpValidator(inp);
+        }, 1000);
+    }
     let inpsReq = document.querySelectorAll('._req');
     if (inpsReq.length) {
         inpsReq.forEach((inp) => {
             inp.oninput = (e) => {
-                setTimeout(() => {
-                    inpValidator(inp);
-                }, 10);
+                debounce(inp);
             };
         });
     }
@@ -188,6 +206,13 @@ function setSubmitVal() {
             } else {
                 removeErr(inp);
             }
+        } else if (inp.classList.contains('js-select')) {
+            if (!inp.value || inp.value === 'default') {
+                addErr(inp);
+                errs++;
+            } else {
+                removeErr(inp);
+            }
         } else {
             if (!inp.value) {
                 addErr(inp);
@@ -200,15 +225,6 @@ function setSubmitVal() {
     }
 
     formValidator = function (form) {
-        let selects = form.querySelectorAll('select._req');
-        selects.forEach((select) => {
-            if (!select.value || select.value === 'default') {
-                addErr(select);
-                errs++;
-            } else {
-                removeErr(select);
-            }
-        });
         let inps = form.querySelectorAll('._req');
         let errs = 0;
         if (inps.length) {

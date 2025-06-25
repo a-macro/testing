@@ -25,6 +25,20 @@ block variables
                 text: 'Excepteur sint occaecat cupidatat non proident'
             }
         ]
+        const pay = [
+            {
+                ico: 'pay1',
+                text: 'Qiwi wallet'
+            },
+            {
+                ico: 'pay2',
+                text: 'Yandex Money'
+            },
+            {
+                ico: 'pay3',
+                text: 'Web Money'
+            }
+        ]
 
 block libs-js
     //script(src="./js/scripts/main-p.js")
@@ -80,20 +94,19 @@ block content
                                 span
                 form(action="#").form.form-val
                     .form__row
-                        .input-wrap
-                            .js-select__wrap
-                                select._req.visually-hidden.js-select(name="ORDER_TYPE")
-                                    option(value="default" hidden selected) Выберите тип системы
-                                    option(value="value1") Sed ut perspiciatis
-                                    option(value="value2") Nemo enim ipsam
-                                    option(value="value3") Et harum quidem
-                                    option(value="value4") Temporibus autem
-                                    option(value="value5") Itaque earum rerum
-                                    option(value="value6") Sed ut perspiciatis
-                                    option(value="value7") Nemo enim ipsam
-                                    option(value="value8") Et harum quidem
-                                    option(value="value9") Temporibus autem
-                                    option(value="value10") Itaque earum rerum
+                        .js-select__wrap
+                            select._req.visually-hidden.js-select(name="ORDER_TYPE")
+                                option(value="default" hidden selected) Выберите тип системы
+                                option(value="value1") Sed ut perspiciatis
+                                option(value="value2") Nemo enim ipsam
+                                option(value="value3") Et harum quidem
+                                option(value="value4") Temporibus autem
+                                option(value="value5") Itaque earum rerum
+                                option(value="value6") Sed ut perspiciatis
+                                option(value="value7") Nemo enim ipsam
+                                option(value="value8") Et harum quidem
+                                option(value="value9") Temporibus autem
+                                option(value="value10") Itaque earum rerum
                         .input-wrap
                             input.input-default._req(type="text" data-type="email" placeholder="Ваш e-mail" name="ORDER_EMAIL")
                         .input-wrap
@@ -104,13 +117,20 @@ block content
                                 p.range__per
                                     span.range__output 0
                                     | %
-                            input.range__input(type="range" name='ORDER_PERCENT')
+                            input.range__input(type="range" name='ORDER_PERCENT' value=0)
                         .input-file
                             .input-file__container
                                 span.input-file__text Прикрепить файл
-                                input(type="file" name="file")
+                                input(type="file" name="ORDER_FILE")
                             .empty-text
                     .form__btns
                         button(type='submit').btn.lg Отправить 
     include ../modules/footer
-
+    .modal
+        .modal__inner
+            a(href="#" data-close).modal__close 
+                +icon('close')
+            .modal__body
+                .modal__text
+                    p.modal__title Ваша заявка успешно отправлена
+                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam officia nostrum nesciunt aliquam fugit minus hic quo consequuntur non aut autem consectetur itaque delectus, libero reiciendis ea voluptate architecto veritatis.
