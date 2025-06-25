@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <meta name="description" content="TEST site">
+    <meta name="author" content="Khapankova Anna">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="keywords" content=""><!-- ICO-->
+    <link rel="stylesheet" type="text/css" href="./css/critical.css">
+    <!--link(rel="stylesheet" type='text/css' href="./css/main-p.css")--><!--MAIN-CSS -->
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__inner container"><a class="header__logo" href="#"><img src="./img/logo.svg" alt=""></a>
+        <nav class="header__nav"><a class="header__nav_item current" href="#">Бизнес</a><a class="header__nav_item" href="#">О нас</a><a class="header__nav_item" href="#">Цены</a><a class="header__nav_item" href="#">Оформить заказ</a></nav><a class="header__burger" href="#"></a>
+      </div>
+    </header>
+    <main class="main">
+      <div class="intro">
+        <div class="intro__bg">
+          <picture>
+            <source media="(min-width:601px)" srcset="./img/banner.webp" type="image/webp">
+            <source media="(min-width:601px)" srcset="./img/banner.jpg" type="image/jpeg">
+            <source srcset="./img/banner-mob.webp" type="image/webp"><img src="./img/banner-mob.jpg" alt="">
+          </picture>
+        </div>
+        <div class="intro__content container">
+          <h1 class="intro__title"><span class='blue'>Lorem ipsum</span> dolor sit ametconsectetur <span class='blue'>adipiscing</span></h1>
+          <div class="intro__text">
+            <p><b>At vero eos et accusamus et iusto odio dignissimos ducimus!</b></p>
+            <ul>
+              <li>Totam rem aperiam eaque ipsa</li>
+              <li>Sit voluptatem accusantium doloremque laudantium</li>
+              <li>Sed ut perspiciatis, unde omnis iste natus error</li>
+            </ul>
+          </div>
+          <div class="intro__btns"><a class="btn" href="#">заказать</a><a class="btn-white" href="#"> подробнее</a></div>
+        </div>
+      </div>
+      <div class="order">
+        <div class="order__bg">
+          <picture>
+            <source media="(min-width:601px)" srcset="./img/map.webp" type="image/webp">
+            <source media="(min-width:601px)" srcset="./img/map.png" type="image/png">
+            <source srcset="./img/map-mob.webp" type="image/webp"><img src="./img/map-mob.png" alt="">
+          </picture>
+        </div>
+        <div class="order__content container">
+          <div class="order__content_top">
+            <h2 class="order__title">Оформление  <span class='blue'>Заказа</span></h2>
+            <div class="order__text">
+              <p>Перед заполнением формы ознакомьтесь с нашей схемой работы!</p>
+            </div>
+          </div>
+          <div class="order__steps">
+            <div class="order__step">
+              <div class="order__step_circle">
+                <svg class="icon icon-search ">
+                  <use xlink:href="./img/svg/symbol/sprite.svg#search"></use>
+                </svg>
+              </div>
+              <p>Lorem ipsum dolor sit amet</p>
+              <div class="order__step_dots"><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="order__step">
+              <div class="order__step_circle">
+                <svg class="icon icon-percent ">
+                  <use xlink:href="./img/svg/symbol/sprite.svg#percent"></use>
+                </svg>
+              </div>
+              <p>Сonsecteturadipiscing elit</p>
+              <div class="order__step_dots"><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="order__step">
+              <div class="order__step_circle">
+                <svg class="icon icon-file ">
+                  <use xlink:href="./img/svg/symbol/sprite.svg#file"></use>
+                </svg>
+              </div>
+              <p>Sed do eiusmod tempor</p>
+              <div class="order__step_dots"><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="order__step">
+              <div class="order__step_circle">
+                <svg class="icon icon-message ">
+                  <use xlink:href="./img/svg/symbol/sprite.svg#message"></use>
+                </svg>
+              </div>
+              <p>Esse cillum dolore eu fugiat</p>
+              <div class="order__step_dots"><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="order__step">
+              <div class="order__step_circle">
+                <svg class="icon icon-money ">
+                  <use xlink:href="./img/svg/symbol/sprite.svg#money"></use>
+                </svg>
+              </div>
+              <p>Excepteur sint occaecat cupidatat non proident</p>
+              <div class="order__step_dots"><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+          </div>
+          <form class="form form-val" action="#">
+            <div class="form__row">
+              <div class="js-select__wrap">
+                <select class="_req visually-hidden js-select" name="ORDER_TYPE">
+                  <option value="default" hidden selected>Выберите тип системы</option>
+                  <option value="value1">Sed ut perspiciatis</option>
+                  <option value="value2">Nemo enim ipsam</option>
+                  <option value="value3">Et harum quidem</option>
+                  <option value="value4">Temporibus autem</option>
+                  <option value="value5">Itaque earum rerum</option>
+                  <option value="value6">Sed ut perspiciatis</option>
+                  <option value="value7">Nemo enim ipsam</option>
+                  <option value="value8">Et harum quidem</option>
+                  <option value="value9">Temporibus autem</option>
+                  <option value="value10">Itaque earum rerum</option>
+                </select>
+              </div>
+              <div class="input-wrap">
+                <input class="input-default _req" type="text" data-type="email" placeholder="Ваш e-mail" name="ORDER_EMAIL">
+              </div>
+              <div class="input-wrap">
+                <input class="input-default _req" type="text" placeholder="Ваше имя" name="ORDER_USER_NAME">
+              </div>
+              <div class="range w66">
+                <div class="range__top">
+                  <p class="label">Sed ut perspiciatis, unde omnis iste natus</p>
+                  <p class="range__per"><span class="range__output">0</span>%</p>
+                </div>
+                <input class="range__input" type="range" name="ORDER_PERCENT" value="0">
+              </div>
+              <div class="input-file">
+                <div class="input-file__container"><span class="input-file__text">Прикрепить файл</span>
+                  <input type="file" name="ORDER_FILE">
+                </div>
+                <div class="empty-text"></div>
+              </div>
+            </div>
+            <div class="form__btns">
+              <button class="btn lg" type="submit">Отправить </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer__inner container">
+        <p class="footer__copyright">© 2018 «LoremIpsum.net» Все права защищены.</p>
+        <div class="footer__payments">
+          <div class="footer__pay">
+            <svg class="icon icon-pay1 ">
+              <use xlink:href="./img/svg/symbol/sprite.svg#pay1"></use>
+            </svg><span>Qiwi wallet</span>
+          </div>
+          <div class="footer__pay">
+            <svg class="icon icon-pay2 ">
+              <use xlink:href="./img/svg/symbol/sprite.svg#pay2"></use>
+            </svg><span>Yandex Money</span>
+          </div>
+          <div class="footer__pay">
+            <svg class="icon icon-pay3 ">
+              <use xlink:href="./img/svg/symbol/sprite.svg#pay3"></use>
+            </svg><span>Web Money</span>
+          </div>
+        </div>
+        <div class="footer__contacts"><a class="footer__contact" href="mailto:info@ipsum228.com">
+            <svg class="icon icon-mail ">
+              <use xlink:href="./img/svg/symbol/sprite.svg#mail"></use>
+            </svg><span>info@ipsum228.com</span></a><a class="footer__contact" href="https://m.vk.com" target="_blank" rel="nofollow">
+            <svg class="icon icon-vk ">
+              <use xlink:href="./img/svg/symbol/sprite.svg#vk"></use>
+            </svg><span>Мы вконтакте </span></a></div>
+      </div>
+    </footer>
+    <div class="modal">
+      <div class="modal__inner"><a class="modal__close" href="#" data-close> 
+          <svg class="icon icon-close ">
+            <use xlink:href="./img/svg/symbol/sprite.svg#close"></use>
+          </svg></a>
+        <div class="modal__body">
+          <div class="modal__text">
+            <p class="modal__title">Ваша заявка успешно отправлена</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam officia nostrum nesciunt aliquam fugit minus hic quo consequuntur non aut autem consectetur itaque delectus, libero reiciendis ea voluptate architecto veritatis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./libs/scroll-lock.min.js"></script>
+    <script src="./js/scripts/val.js"></script>
+    <script src="./js/scripts/scripts.js"></script>
+    <!--script(src="./js/scripts/main-p.js")-->
+  </body>
+</html>
