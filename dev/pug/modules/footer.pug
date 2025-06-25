@@ -1,2 +1,15 @@
 footer.footer
-
+    .footer__inner.container
+        p.footer__copyright © 2018 «LoremIpsum.net» Все права защищены.
+        .footer__payments
+            for item in pay
+                .footer__pay
+                    +icon(item.ico)
+                    span #{item.text}
+        .footer__contacts
+            a(href="mailto:info@ipsum228.com").footer__contact
+                +icon('mail')
+                span info@ipsum228.com
+            a(href="https://m.vk.com" target="_blank" rel="nofollow").footer__contact
+                +icon('vk')
+                span Мы вконтакте 

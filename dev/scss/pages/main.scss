@@ -19,22 +19,39 @@
         width: 100%;
         max-width: calc(780px + var(--p) + var(--p));
         min-height: 100%;
-        padding-top: 140px;
+        padding-top: 160px;
         padding-bottom: 140px;
         position: relative;
         z-index: 2;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 80px;
+        gap: min(80px, 6vw);
+        @include xmd-block {
+            max-width: 80vw;
+        }
+        @include xxs-block {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        @include xxxs-block {
+            max-width: unset;
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
     }
     &__title {
         color: var(--black);
-        font-size: 48px;
+        font-size: min(48px, 4vw);
         font-style: normal;
         font-weight: 700;
         line-height: normal;
         text-transform: uppercase;
+        @include xs-block {
+            font-size: 32px;
+        }
+        @include xxxs-block {
+            font-size: 26px;
+        }
     }
     &__text {
         display: flex;
@@ -47,6 +64,12 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+        @include xs-block {
+            font-size: 18px;
+        }
+        @include xxxs-block {
+            font-size: 16px;
+        }
         p,
         ul,
         a {
@@ -55,6 +78,12 @@
             font-weight: 400;
             line-height: normal;
             color: var(--black);
+            @include xs-block {
+                font-size: 18px;
+            }
+            @include xxxs-block {
+                font-size: 16px;
+            }
         }
         b {
             font-weight: 700;
@@ -94,9 +123,17 @@
 
 .order {
     position: relative;
-    padding-top: 120px;
-    padding-bottom: 150px;
+    padding-top: min(120px, 10vw);
+    padding-bottom: min(150px, 12vw);
     background: var(--bg-dark2);
+    @include xs-block {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    @include xxxs-block {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
     &__bg {
         @include full;
         z-index: 1;
@@ -111,21 +148,31 @@
         flex-direction: column;
         align-items: stretch;
         gap: 80px;
+        @include xxs-block {
+            gap: 44px;
+        }
         &_top {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 30px;
+            @include xxs-block {
+                gap: 20px;
+            }
         }
     }
 
     &__title {
         color: var(--white);
-        font-size: 36px;
+        font-size: min(36px, 3.4vw);
         font-style: normal;
         font-weight: 700;
         line-height: normal;
         text-transform: uppercase;
+        text-align: center;
+        @include xs-block {
+            font-size: 28px;
+        }
     }
     &__text {
         color: var(--light);
@@ -133,6 +180,10 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+        text-align: center;
+        @include xxxs-block {
+            font-size: 16px;
+        }
     }
 
     &__steps {
@@ -142,14 +193,50 @@
         gap: 30px;
     }
     &__step {
-        width: 209px;
+        width: min(209px, calc((100% - 120px) / 5));
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 20px;
         padding: 0 10px;
         position: relative;
-        &:nth-child(5n),
+        @include xmd-block {
+            width: min(209px, calc((100% - 90px) / 4));
+        }
+        @include xs-block {
+            width: min(209px, calc((100% - 60px) / 3));
+        }
+        @include xxs-block {
+            width: min(209px, calc((100% - 30px) / 2));
+        }
+        &:nth-child(5n) {
+            @media (min-width: 1025px) {
+                .order__step_dots {
+                    display: none;
+                }
+            }
+        }
+        &:nth-child(4n) {
+            @media (max-width: 1024px) and (min-width: 769px) {
+                .order__step_dots {
+                    display: none;
+                }
+            }
+        }
+        &:nth-child(3n) {
+            @media (max-width: 768px) and (min-width: 601px) {
+                .order__step_dots {
+                    display: none;
+                }
+            }
+        }
+        &:nth-child(2n) {
+            @media (max-width: 600px) {
+                .order__step_dots {
+                    display: none;
+                }
+            }
+        }
         &:last-child {
             .order__step_dots {
                 display: none;
@@ -163,6 +250,9 @@
             font-style: normal;
             font-weight: 400;
             line-height: normal;
+            @include xxxs-block {
+                font-size: 14px;
+            }
         }
         &_circle {
             width: 100px;
@@ -173,6 +263,10 @@
             justify-content: center;
             background-color: var(--blue-hovered);
             border: 5px solid var(--blue-dark);
+            @include xxxs-block {
+                width: 80px;
+                height: 80px;
+            }
 
             img,
             svg {
@@ -180,16 +274,29 @@
                 width: 55px;
                 height: 55px;
                 fill: white;
+                @include xxxs-block {
+                    width: 46px;
+                    height: 46px;
+                }
             }
         }
         &_dots {
             position: absolute;
             top: 47px;
             right: -15px;
-            width: 110px;
+            width: min(110px, 8vw);
             transform: translateX(50%);
             display: flex;
             justify-content: space-between;
+            @include xs-block {
+                width: 10vw;
+            }
+            @include xxs-block {
+                width: 16vw;
+            }
+            @include xxxs-block {
+                top: 40px;
+            }
             span {
                 display: block;
                 width: 6px;
@@ -230,6 +337,14 @@
     display: grid;
     grid-gap: 30px;
     grid-template-columns: repeat(3, 1fr);
+    @include xs-block {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include xxs-block {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
     .input-wrap input {
         width: 100%;
     }
@@ -249,12 +364,28 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    @include xxxs-block {
+        flex-direction: column;
+        align-items: flex-end;
+        font-size: 16px;
+    }
+    .label {
+        @include xxxs-block {
+            width: 100%;
+        }
+    }
 }
 .range {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
+    @include xs-block {
+        order: 5;
+    }
+    @include xxs-block {
+        order: unset;
+    }
     input[type='range'] {
         -webkit-appearance: none;
         margin: 10px 0;

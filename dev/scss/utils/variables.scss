@@ -2,6 +2,7 @@
     --p: max(min(min(375px, 20vw), calc(50vw - 585px - var(--scr, 17px) / 2)), 32px);
     --bg-dark: rgba(16, 16, 29, 0.9);
     --bg-dark2: #272733;
+    --bg-dark3: #3d4050;
     --white: white;
     --white-85: rgba(255, 255, 255, 0.85);
     --white-70: rgba(255, 255, 255, 0.7);
@@ -9,8 +10,12 @@
     --light: #bbb;
     --dark: #6f6d7b;
     --grey: rgba(196, 196, 196, 1);
+    --grey-line: #c3c3c3;
     --text-primary: #2a2b30;
     --blue: rgba(67, 171, 240, 1);
     --blue-hovered: rgba(62, 156, 220, 1);
     --blue-dark: rgba(40, 102, 144, 1);
+    @media (max-width: 600px) {
+        --p: 24px;
+    }
 }

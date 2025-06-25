@@ -6,6 +6,12 @@
     width: 100%;
     padding: 32px 0;
     background: var(--bg-dark);
+    @include xmd-block {
+        padding: 24px 0;
+    }
+    @include xs-block {
+        padding: 16px 0;
+    }
 }
 
 .header__inner {
@@ -19,6 +25,7 @@
     width: 247px;
     height: 35px;
     display: block;
+    max-width: 48vw;
     img,
     svg {
         display: block;
@@ -29,9 +36,78 @@
     }
 }
 
+.header__burger {
+    display: none;
+    @include xs-block {
+        display: block;
+        width: 32px;
+        height: 32px;
+        position: relative;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: calc(50% - 1px);
+        transform: translateY(-3px);
+        height: 2px;
+        width: 32px;
+        background: var(--blue);
+        transform-origin: center;
+        transition: transform 0.3s;
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        right: 0;
+        transform: translateY(3px);
+        top: calc(50% - 1px);
+        height: 2px;
+        width: 32px;
+        max-width: 24px;
+        background: var(--blue);
+        transform-origin: center;
+        transition: transform 0.3s, max-width 0.1s;
+    }
+}
+
+.show-burger {
+    .header__nav {
+        display: flex;
+        transform: translateX(0);
+    }
+    .header__burger {
+        &::after {
+            transform: translateY(0px) rotate(-45deg);
+            width: 32px;
+        }
+        &::before {
+            transform: translateY(0px) rotate(45deg);
+            max-width: 32px;
+        }
+    }
+}
+
 .header__nav {
     display: flex;
     gap: 60px;
+    @include xmd-block {
+        gap: 32px;
+    }
+    @include xs-block {
+        flex-direction: column;
+        align-items: flex-end;
+        background: var(--bg-dark);
+        display: none;
+        position: fixed;
+        top: var(--hH);
+        left: 0;
+        width: 100%;
+        transform: translateX(103%);
+        transition: transform 0.4s;
+        height: calc(100dvh - var(--hH));
+        padding: var(--p);
+    }
     &_item {
         position: relative;
         color: var(--white);
@@ -41,6 +117,9 @@
         line-height: normal;
         text-transform: uppercase;
         transition: color 0.3s;
+        @include xs-block {
+            font-size: 16px;
+        }
         @include hover {
             &::after {
                 transform: scaleX(1);
