@@ -1,10 +1,14 @@
 :root {
     --p: max(min(min(375px, 20vw), calc(50vw - 585px - var(--scr, 17px) / 2)), 32px);
     --bg-dark: rgba(16, 16, 29, 0.9);
+    --bg-dark2: #272733;
     --white: white;
     --black: #000;
+    --light: #bbb;
     --dark: #6f6d7b;
+    --grey: rgba(196, 196, 196, 1);
     --text-primary: #2a2b30;
     --blue: rgba(67, 171, 240, 1);
-    --blue-hovered: rgb(15 146 233);
+    --blue-hovered: rgba(62, 156, 220, 1);
+    --blue-dark: rgba(40, 102, 144, 1);
 }

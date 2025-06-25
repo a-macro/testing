@@ -1,13 +1,56 @@
 @import './utils/mixins';
 @import './utils/smart-grid';
-/*
+
+// @font-face {
+//     font-family: "Lato";
+//     src: url("./../files/fonts/Lato-Thin.woff2") format("woff2"),
+//     url("./../files/fonts/Lato-Thin.ttf") format("truetype");
+//     font-weight: 100;
+//     font-style: normal;
+// }
+
 @font-face {
-    font-family: "Museo Sans Cyrl";
-    src: url("./../files/MuseoSansCyrl-500.woff") format("woff"),
-    url("./../files/MuseoSansCyrl-500.ttf") format("truetype");
+    font-family: 'Lato';
+    src: url('./../files/fonts/Lato-Regular.woff2') format('woff2'),
+        url('./../files/fonts/Lato-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('./../files/fonts/Lato-Medium.woff2') format('woff2'),
+        url('./../files/fonts/Lato-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
-}*/
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('./../files/fonts/Lato-Semibold.woff2') format('woff2'),
+        url('./../files/fonts/Lato-Semibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('./../files/fonts/Lato-Bold.woff2') format('woff2'),
+        url('./../files/fonts/Lato-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('./../files/fonts/Lato-Heavy.woff2') format('woff2'),
+        url('./../files/fonts/Lato-Heavy.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('./../files/fonts/Lato-Black.woff2') format('woff2'),
+        url('./../files/fonts/Lato-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
 body {
     font-family: 'Lato', sans-serif;
     font-style: normal;
