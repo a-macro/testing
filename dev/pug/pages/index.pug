@@ -66,8 +66,8 @@ block content
                         li Sit voluptatem accusantium doloremque laudantium
                         li Sed ut perspiciatis, unde omnis iste natus error
                 .intro__btns
-                    a(href="#").btn заказать
-                    a(href="#").btn-white  подробнее
+                    a(href="#" data-anchor='form').btn заказать
+                    a(href="#" data-anchor='form').btn-white  подробнее
         .order
             .order__bg
                 picture
@@ -92,7 +92,7 @@ block content
                                 span
                                 span
                                 span
-                form(action="#").form.form-val
+                form(action="#").form.form-val#form
                     .form__row
                         .js-select__wrap
                             select._req.visually-hidden.js-select(name="ORDER_TYPE")
