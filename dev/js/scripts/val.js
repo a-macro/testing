@@ -1,11 +1,11 @@
 let formValidator;
-    
+
 function addErr(inp) {
     let parent = inp.closest('.input-wrap');
     if (!parent) {
         parent = inp.closest('.checkbox');
     }
-    if(parent) {
+    if (parent) {
         parent.classList.add('_err');
     }
 }
@@ -15,44 +15,116 @@ function removeErr(inp) {
     if (!parent) {
         parent = inp.closest('.checkbox');
     }
-    if(parent) {
+    if (parent) {
         parent.classList.remove('_err');
     }
 }
 
 function scrollToErr(parent) {
-    /*let firstErr = parent.querySelector("._err");
-    if(firstErr) {
-        firstErr.scrollIntoView({ block: "center", behavior: "auto" });
-    }*/
+    let firstErr = parent.querySelector('._err');
+    if (firstErr) {
+        firstErr.scrollIntoView({ block: 'center', behavior: 'auto' });
+    }
 }
-    
+
 function setSubmitVal() {
     let forms = document.querySelectorAll('.form-val');
     if (forms.length) {
+        let inputFileUploads = document.querySelectorAll('.input-file input');
+        if (inputFileUploads) {
+            inputFileUploads.forEach(function (inputFileUpload) {
+                let inputFile = inputFileUpload.closest('.input-file');
+                let emptyText = inputFile.querySelector('.empty-text');
+                if (inputFile.classList.contains('multi')) {
+                    let amount = inputFile.dataset.amount;
+                    inputFileUpload.onchange = function () {
+                        let newEl = document.createElement('div');
+                        newEl.classList.add('file');
+                        emptyText.appendChild(newEl);
+                        let inp = document.createElement('input');
+                        inp.type = 'file';
+                        inp.name = inputFileUpload.name;
+                        inp.files = inputFileUpload.files;
+                        newEl.appendChild(inp);
+                        let text = document.createElement('span');
+                        text.classList.add('inp-text');
+                        text.innerHTML = this.files[0].name;
+                        newEl.appendChild(text);
+                        let del = document.createElement('span');
+                        del.className = 'empty-text__btn-del';
+                        del.innerText = '';
+                        newEl.appendChild(del);
+                        del.onclick = () => {
+                            this.value = '';
+                            emptyText.innerHTML = '';
+                            del.className = '';
+                            emptyText.classList.remove('filled');
+                        };
+                        this.value = '';
+                    };
+                } else {
+                    inputFileUpload.onchange = function () {
+                        emptyText.innerText = this.files[0].name;
+                        emptyText.classList.add('filled');
+                        let del = document.createElement('span');
+                        del.className = 'empty-text__btn-del';
+                        del.innerText = '';
+                        emptyText.appendChild(del);
+                        del.onclick = () => {
+                            this.value = '';
+                            emptyText.innerHTML = '';
+                            del.className = '';
+                            emptyText.classList.remove('filled');
+                        };
+                    };
+                }
+            });
+        }
         forms.forEach((form) => {
-            form.onsubmit = (e) => {
+            form.addEventListener('submit', (e) => {
+                let files = form.querySelectorAll('.input-file');
+                if (files.length) {
+                    files.forEach((el) => {
+                        let wrap = el.closest('.input-wrap');
+                        if (el.classList.contains('multi')) {
+                            let amount = el.dataset.amount;
+                            let files = el.querySelectorAll('.file');
+                            let text = wrap.querySelector('.multi-amount');
+                            if (files.length < +amount) {
+                                el.classList.add('_err');
+                                text.classList.add('red');
+                            } else {
+                                el.classList.remove('_err');
+                                text.classList.remove('red');
+                            }
+                        } else {
+                            let inp = el.querySelector('input');
+                            if (inp.files.length === 0) {
+                                el.classList.add('_err');
+                            } else {
+                                el.classList.remove('_err');
+                            }
+                        }
+                    });
+                }
                 let check = formValidator(form);
                 let errs = form.querySelectorAll('._err');
                 if (errs.length > 0 || check > 0) {
                     e.preventDefault();
-                    if (BX) {
-                        BX.closeWait();
-                    }
                     scrollToErr(form);
                     return false;
                 }
-            };
+            });
         });
     }
 
-    let mailFormat = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let mailFormat =
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     function checkFormat(inp, format) {
         let result = format.test(inp.value);
         return result;
     }
-
 
     let inpsReq = document.querySelectorAll('._req');
     if (inpsReq.length) {
@@ -68,23 +140,23 @@ function setSubmitVal() {
     function inpValidator(inp) {
         let attr = inp.getAttribute('data-type');
         let errs = 0;
-        if(attr === "option") {
-            let parent = inp.closest("._select");
-            let allChecks = parent.querySelectorAll("input");
-            if(allChecks.length) {
+        if (attr === 'option') {
+            let parent = inp.closest('._select');
+            let allChecks = parent.querySelectorAll('input');
+            if (allChecks.length) {
                 allChecks.forEach((check) => {
-                    if(check.checked) {
-                        parent.classList.remove("_err");
+                    if (check.checked) {
+                        parent.classList.remove('_err');
                     } else {
-                        parent.classList.add("_err");
+                        parent.classList.add('_err');
                     }
                 });
             }
-            if(parent.querySelector("._err")) {
-                parent.classList.add("_err");
+            if (parent.querySelector('._err')) {
+                parent.classList.add('_err');
                 errs++;
             } else {
-                parent.classList.remove("_err");
+                parent.classList.remove('_err');
             }
         } else if (inp.classList.contains('itc-select__toggle')) {
             let attr = inp.getAttribute('data-index');
@@ -103,7 +175,7 @@ function setSubmitVal() {
                 removeErr(inp);
             }
         } else if (attr && attr == 'tel') {
-            if (inp.value.includes('_') || !inp.value || !inp.classList.contains("_success")) {
+            if (inp.value.includes('_') || !inp.value || !inp.classList.contains('_success')) {
                 addErr(inp);
                 errs++;
             } else {
@@ -127,7 +199,16 @@ function setSubmitVal() {
         return errs;
     }
 
-    formValidator = function(form) {
+    formValidator = function (form) {
+        let selects = form.querySelectorAll('select._req');
+        selects.forEach((select) => {
+            if (!select.value || select.value === 'default') {
+                addErr(select);
+                errs++;
+            } else {
+                removeErr(select);
+            }
+        });
         let inps = form.querySelectorAll('._req');
         let errs = 0;
         if (inps.length) {
@@ -139,7 +220,7 @@ function setSubmitVal() {
             });
         }
         return errs;
-    }
+    };
 }
 document.addEventListener('DOMContentLoaded', function () {
     setSubmitVal();

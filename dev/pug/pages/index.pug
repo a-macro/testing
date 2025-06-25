@@ -78,5 +78,39 @@ block content
                                 span
                                 span
                                 span
+                form(action="#").form.form-val
+                    .form__row
+                        .input-wrap
+                            .js-select__wrap
+                                select._req.visually-hidden.js-select(name="ORDER_TYPE")
+                                    option(value="default" hidden selected) Выберите тип системы
+                                    option(value="value1") Sed ut perspiciatis
+                                    option(value="value2") Nemo enim ipsam
+                                    option(value="value3") Et harum quidem
+                                    option(value="value4") Temporibus autem
+                                    option(value="value5") Itaque earum rerum
+                                    option(value="value6") Sed ut perspiciatis
+                                    option(value="value7") Nemo enim ipsam
+                                    option(value="value8") Et harum quidem
+                                    option(value="value9") Temporibus autem
+                                    option(value="value10") Itaque earum rerum
+                        .input-wrap
+                            input.input-default._req(type="text" data-type="email" placeholder="Ваш e-mail" name="ORDER_EMAIL")
+                        .input-wrap
+                            input.input-default._req(type="text" placeholder="Ваше имя" name="ORDER_USER_NAME")
+                        .range.w66
+                            .range__top
+                                p.label Sed ut perspiciatis, unde omnis iste natus
+                                p.range__per
+                                    span.range__output 0
+                                    | %
+                            input.range__input(type="range" name='ORDER_PERCENT')
+                        .input-file
+                            .input-file__container
+                                span.input-file__text Прикрепить файл
+                                input(type="file" name="file")
+                            .empty-text
+                    .form__btns
+                        button(type='submit').btn.lg Отправить 
     include ../modules/footer
 
