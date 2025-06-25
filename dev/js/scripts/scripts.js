@@ -52,8 +52,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 let attr = anchor.dataset.anchor;
                 let related = document.querySelector(`#${attr}`);
                 if (related) {
-                    let headerH = header.offsetHeight;
-                    let top = related.offsetTop; // + window.scrollY;
+                    console.log(top);
+                    let top = related.getBoundingClientRect().top + window.scrollY; // ;
+                    console.log(top);
                     let calcTop = top - headerH > 0 ? top - headerH : 0;
                     window.scrollTo({
                         top: calcTop,

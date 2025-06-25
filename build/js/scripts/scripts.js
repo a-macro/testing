@@ -50,9 +50,10 @@ window.addEventListener('DOMContentLoaded', function () {
         var attr = anchor.dataset.anchor;
         var related = document.querySelector("#".concat(attr));
         if (related) {
-          var _headerH = header.offsetHeight;
-          var top = related.offsetTop; // + window.scrollY;
-          var calcTop = top - _headerH > 0 ? top - _headerH : 0;
+          console.log(top);
+          var top = related.getBoundingClientRect().top + window.scrollY; // ;
+          console.log(top);
+          var calcTop = top - headerH > 0 ? top - headerH : 0;
           window.scrollTo({
             top: calcTop,
             behavior: 'smooth'
